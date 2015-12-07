@@ -8,11 +8,165 @@
     </title>
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery.js"></script>
+    <script src="libs/flot/jquery.flot.js"></script>
+    <script src="libs/bootstrap/js/tab.js"></script>
+    <script src="libs/bootstrap/js/modal.js"></script>
+    <script src="js/FuzzyCalculator.js"></script>
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <p class="navbar-brand">
+                    ХАРАКТЕРИСТИЧНІ ПАРАМЕТРИ ТА ЛІНГВІСТИЧНІ
+                    МОДИФІКАТОРИ НЕЧІТКИХ МНОЖИН
+                </p>
+                <p class="navbar-text navbar-right">Автор:  <a href="#" class="navbar-link">Армен Петросян</a> , 402 группа</p>
+            </div>
+        </nav>
+    </header>
 
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="tab-control active" data-function="triangle">
+                <a href="#triangle" aria-controls="triangle" role="tab" data-toggle="tab">Трикутна функція</a>
+            </li>
+            <li role="presentation" class="tab-control" data-function="sigma">
+                <a href="#sigma" aria-controls="sigma" role="tab" data-toggle="tab">Сигмоїдальна функція</a>
+            </li>
+        </ul>
 
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="triangle">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-4 well">
+                             <form action="">
+                                 <fieldset>
+                                     <legend>
+                                         Нечітка множина А
+                                     </legend>
+                                     <div class="form-group">
+                                         <div class="row">
+                                             <div class="col-sm-4">
+                                                 <label for="triangleMin">Нижня границя</label>
+                                                 <input type="number" class="form-control" id="triangleMin" value="1">
+                                             </div>
+                                             <div class="col-sm-4">
+                                                 <label for="triangleX">Дійсне число</label>
+                                                 <input type="number" class="form-control" id="triangleX" value="15">
+                                             </div>
+                                             <div class="col-sm-4">
+                                                 <label for="triangleMax">Верхня границя</label>
+                                                 <input type="number" class="form-control" id="triangleMax" value="30">
+                                             </div>
+                                             <small class="col-sm-12 text-center well-sm">
+                                                 * Повинно виконуватись правило: <br>
+                                                 <strong>Нижня границя</strong>
+                                                 < <strong>Дійсне число</strong>
+                                                 < <strong>Верхня границя</strong>
+                                             </small>
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="operators1">Оберіть модифікатор</label>
+                                         <select type="number" class="form-control operators" id="operators1">
+                                             <option value="0">Без модифікатора</option>
+                                             <option value="con">Оператор концентрації (concentration)</option>
+                                             <option value="dil">Оператор розтягнення (dilatation)</option>
+                                             <option value="int">Оператор збільшення контрастності</option>
+                                         </select>
+                                     </div>
+                                     <button type="button" class="js-actionButton center-block btn btn-primary">Побудувати</button>
+                                 </fieldset>
+                             </form>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="triangle-chart well" style="width:100%;height:325px" >
 
-<script src="js/common.js"></script>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Характеристики нечіткої множини А</div>
+                                <div class="panel-body">
+                                    Потужність нечіткої множини А: <span class="card"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="sigma">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-4 well">
+                            <form action="">
+                                <fieldset>
+                                    <legend>
+                                        Нечітка множина А
+                                    </legend>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label for="sigA">Параметр a </label>
+                                                <input type="number" class="form-control" id="sigA" value="1">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label for="sigC">Параметр c </label>
+                                                <input type="number" class="form-control" id="sigC" value="7">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="operators2">Оберіть модифікатор</label>
+                                        <select type="number" class="form-control operators" id="operators2">
+                                            <option value="0">Без модифікатора</option>
+                                            <option value="con">Оператор концентрації (concentration)</option>
+                                            <option value="dil">Оператор розтягнення (dilatation)</option>
+                                            <option value="int">Оператор збільшення контрастності</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="js-actionButton center-block btn btn-primary">Побудувати</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="triangle-chart well" style="width:100%;height:325px" >
+
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Характеристики нечіткої множини А</div>
+                                <div class="panel-body">
+                                    Потужність нечіткої множини А: <span class="card"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--// Сообщенеие об ошибке-->
+    <div id="error-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-danger">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        Помилка
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    Повинно виконуватись правило:
+                    <strong>Нижня границя</strong>
+                    < <strong>Дійсне число</strong>
+                    < <strong>Верхня границя</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
 </body>
 </html>
