@@ -63,6 +63,7 @@
                     {label:"A", data:resultMatrix},
                     {label:"Носій А", data:support},
                     {label:"Ядро нечіткої множини А", data:core},
+                    {label:"Виcота нечіткої множини А", data: instance.getHeight() },
                 ], {  xaxis: { min: 0 },yaxis: { max: 1.5 } });
 
             }

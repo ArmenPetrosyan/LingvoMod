@@ -57,17 +57,24 @@ function FuzzyCalculator(memberFuncStr, fuzzySet){
             return path;
         },
 
+        getHeight : function(){
+            var x = this.fuzzyHeight();
+            return [[x,0], [x,1]];
+        },
+
         // Висота нечіткої множини А
         fuzzyHeight : function(){
-            var max = 0;
+            var maxX = 0,
+                maxY = 0;
 
             for (var x = 0; x < stepCount; x++){
-                if( max < memberFunc(x) ){
-                    max = x;
+                if( maxY < memberFunc(x) ){
+                    maxY = memberFunc(x);
+                    maxX = x;
                 }
             }
 
-            return max;
+            return maxX;
         },
 
         // Носій нечіткої множини А
